@@ -1,0 +1,8 @@
+Question 1 :
+
+In order to prevent coalescing part of the buddy algorithm from being inefficiency due to memory hole, buddy algorithm can use virtual address rather than physical address. Although memory hole will make some continuous physical addresses are not usable, virtual addresses are still continuous and usable. Buddy algorithm can coalesce the page blocks with continuous virtual addresses. Hence, using virtual addresses will reduce inefficiency of coalescing part of the buddy algorithm.
+
+
+
+Question 2 :
+    
