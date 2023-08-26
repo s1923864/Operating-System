@@ -1,0 +1,17 @@
+
+
+
+We can learn from NTFS filesystem. This file system is high-efficiency. In NTFS file system, there are 2 kinds of file attribution : resident and non-resident attributes. Resident attributes are directly stored in MFT, such as file names and related time information (such as creation time, modification time, etc.) are always resident attributes, non-resident attributes are stored outside MFT, but a complex indexing method is used to to instruct. If the file or folder is less than 1500 bytes (in fact, there are quite a few files or folders of this size in our computer), then all their properties, including content, will be resident in MFT, and MFT is a system that will be displayed as soon as Windows starts. Loaded into memory, so when you view these files or folders, their contents are already in the cache, which naturally greatly improves the access speed of files and folders.
+
+
+we can do some modifications to the file system which greatly increase the speed of pattern matching:
+
+1. Resident attributes are directly stored in MFT, such as file names and related time information. when doing pattern matching, the file system doesn't need to open the all directories recursively to know all directory name and file name and the file system just need to directly do pattern matching in MFT which greatly spead up pattern matching.
+
+2.Sort the file and directory. when doing pattern matching, the file system doesn't need iterate all directories and files and file name which spead up pattern matching. 
+
+3. we can apply binary search to the file system on the basis of 2 sothat the file system only take O(lg n) time to search a specific file or directory. When there are lots of files and directories, binary search will be very effective. When doing pattern matching applying binary search, we take fewer time to list all related directories and files. For example,when we want to match the pattern (a-e)*, It takes O(lg n) times to find the range and if we don't apply binary search, it takes O(n) time to find the range. Hence, binary search speed up pattern matching.
+
+
+
+part of contents are Referenced from https://zhidao.baidu.com/question/62655273 
